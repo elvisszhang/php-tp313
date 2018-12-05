@@ -36,12 +36,21 @@ class Think {
 				set_exception_handler(array('Think','appException'));
 			}
 			else{
-				// 设置Whoops提供的错误和异常处理
-				error_reporting(E_ALL ^ E_DEPRECATED ^ E_NOTICE ^ E_WARNING); 
-				//$facade = new \Whoops\Util\SystemFacade(E_ALL ^ E_NOTICE ^ E_DEPRECATED);
-				$whoops = new \Whoops\Run;
-				$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-				$whoops->register();
+				if(class_exists('\Whoops\Run')){
+					// 设置Whoops提供的错误和异常处理
+					//$facade = new \Whoops\Util\SystemFacade(E_ALL ^ E_NOTICE ^ E_DEPRECATED);
+					error_reporting(E_ALL ^ E_DEPRECATED ^ E_NOTICE ^ E_WARNING); 
+					$whoops = new \Whoops\Run;
+					$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+					$whoops->register();
+				}
+				else{
+					//使用TP自带的错误及异常处理器
+					error_reporting(E_ALL ^ E_DEPRECATED ^ E_NOTICE ^ E_WARNING); 
+					register_shutdown_function(array('Think','fatalError'));
+					set_error_handler(array('Think','appError'));
+					set_exception_handler(array('Think','appException'));
+				}
 			}
 		}
 		else{
