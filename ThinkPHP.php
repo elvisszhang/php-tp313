@@ -10,14 +10,10 @@
 // +----------------------------------------------------------------------
 //检查必须配置常量
 //嘉软远程服务器配置
-defined('JIARUAN_COMP_SERVER') or define('JIARUAN_COMP_SERVER','http://jrcomp.rltest.cn');
 
 //不允许自己定义 APP_DEBUG 常量，防止进入git仓库
 if( defined('APP_DEBUG') )
 	die('APP_DEBUG should not defined. use .debug instead');
-
-//是否单插件应用
-defined('APP_SINGLE_PLUGIN') or define('APP_SINGLE_PLUGIN' , false);
 
 // ThinkPHP 入口文件
 // 记录开始运行时间

@@ -66,7 +66,7 @@ class Smarty_Internal_Resource_Jiaruandev extends Smarty_Resource
 		}
 		//从远程获取模板
 		$block_data = $this->getBlockContent($source->tpl_path);
-		$source->compurl = JIARUAN_COMP_SERVER . '/uicomp/index.php?tpl=' . $source->name .'&l=' . $lang .'&eng=smarty3&version=2&debug=1';
+		$source->compurl = UICOMP_SERVER . '/?tpl=' . $source->name .'&l=' . $lang .'&eng=smarty3&version=2&debug=1';
 		
 		$http_data = $this->httpPost($source->compurl,$block_data);
 		$data = json_decode($http_data,true);
