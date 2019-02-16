@@ -546,7 +546,7 @@ function M($name='', $tablePrefix='',$connection='DB_DSN') {
 			$dbs = require(CONF_PATH . 'db_structure.php');
 		//加上isset避免拦截器调用，优化性能
 		if(isset($dbs[$name]) && isset($dbs[$name]['parent_model']) && $dbs[$name]['parent_model'])
-			return MM( $dbs[$name]['parent_model'] );
+			return M( $dbs[$name]['parent_model'] );
 	}
 	//加载模型
     static $_model  = array();
